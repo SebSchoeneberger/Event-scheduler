@@ -13,6 +13,8 @@ import EventDetails from './components/EventDetails';
 import SignUpForm from './components/SignUpForm';
 import CreateEventForm from './components/CreateEventForm'
 import ProtectedLayout from './components/ProtectedLayout';
+import Layout from './components/Layout';
+import Home from './components/Home'
 
 function App() {
 
@@ -23,7 +25,7 @@ function App() {
       <Route path='/eventlist' element={<EventList />}/>
       <Route path='/eventdetails/:id' element={<EventDetails />}/>
       <Route path="/protected" element={<ProtectedLayout />}>
-        <Route path='/createventform' element={<CreateEventForm />}/>
+        <Route path='createventform' element={<CreateEventForm />}/>
       </Route>
     </Route>
   ));
