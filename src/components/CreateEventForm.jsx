@@ -1,9 +1,9 @@
 //Tibor CreateEventPage.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function CreateEventForm() {
   const [eventName, setEventName] = useState('');
-  const [eventDate, setEventDate] = useState('');
+  const [eventDate, setEventDate] = useState(new Date().toISOString().slice(0, 10));
   const [eventLocation, setEventLocation] = useState('');
   const [eventDescription, setEventDescription] = useState('');
   const [error, setError] = useState('');
@@ -41,6 +41,10 @@ function CreateEventForm() {
 
       const data = await response.json();
       console.log('Event created successfully:', data);
+      alert("succesfully saved to the database")
+      setEventName("");
+      setEventLocation("");
+      setEventDescription("");
       
     } catch (error) {
       setError('Failed to create event. Please try again.');
@@ -69,6 +73,7 @@ function CreateEventForm() {
           <label className="block text-gray-700 mb-2">Event Date</label>
           <input
             type="date"
+            id="startdateID"
             className="w-full p-2 border border-gray-300 rounded"
             value={eventDate}
             onChange={(e) => setEventDate(e.target.value)}
