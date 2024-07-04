@@ -9,7 +9,7 @@ function Layout() {
             <div className="navbar bg-base-200">
               <div className="flex-1">
             <Link to='/'>
-                  <img src="src/assets/9721ff6417fa416e8e33c0a09b0e5b94-free-removebg-preview (1) (1).png" alt="i" className="btn btn-ghost text-xl" />
+                  <img src="/src/assets/9721ff6417fa416e8e33c0a09b0e5b94-free-removebg-preview (1) (1).png" alt="i" className="btn btn-ghost text-xl" />
             </Link>
               </div>
             <div className="flex-none gap-6">
