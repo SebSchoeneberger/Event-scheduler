@@ -7,7 +7,7 @@ function Home() {
   <div className="hero-content flex-col lg:flex-row">
     <img
       src="src/assets/marissa-grootes-zv5QSKaP8G8-unsplash.jpg"
-      className="max-w-sm rounded-lg shadow-2xl" />
+      className="max-w-sm rounded-lg shadow-2xl pl-2" />
     <div>
       <h1 className="text-5xl font-bold">Event Scheduler</h1>
       <p className="py-6">
