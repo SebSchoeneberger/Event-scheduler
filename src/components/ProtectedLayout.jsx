@@ -1,13 +1,14 @@
-// Tibor
-import { Outlet } from "react-router-dom";
-
+// ProtectedLayout.jsx - Tibor
+import { Outlet, Navigate } from "react-router-dom";
 
 function ProtectedLayout() {
-    return ( 
-        <>
-            <Outlet />
-        </>
-     );
+    const isAuthenticated = !!localStorage.getItem('authToken'); // The auth token should be stored in the local storage
+
+    return isAuthenticated ? (
+      <Outlet />
+    ) : (
+      <Navigate to="/" />
+    );
 }
 
 export default ProtectedLayout;
