@@ -33,7 +33,6 @@ function CreateEventForm() {
           location: eventLocation, // hardcoded in swagger.js, schema/event.js, models/events.js
           organizerId: 1 // should get from localstorage 
         }),
-       setEventName(''), setEventDescription(''),setEventLocation('')
       });
 
       if (!response.ok) {
