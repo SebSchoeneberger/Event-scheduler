@@ -24,8 +24,8 @@ function App() {
       <Route path='/signup' element={<SignUpForm />}/>
       <Route path='/eventlist' element={<EventList />}/>
       <Route path='/eventdetails/:id' element={<EventDetails />}/>
-      <Route path="/" element={<ProtectedLayout />}>
-        <Route path='createeventform' element={<CreateEventForm />}/>
+      <Route path="/protected" element={<ProtectedLayout />}>
+        <Route path='createventform' element={<CreateEventForm />}/>
       </Route>
     </Route>
   ));
