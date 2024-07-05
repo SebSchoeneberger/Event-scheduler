@@ -32,7 +32,7 @@ function EventList() { const [eventList, setEventList] = useState([]);
                      </figure>
   
                  <div className="card-body items-center text-center">
-                        <h2 className="card-title">{p.title}</h2>
+                        <h2 className="card-title"><strong>{p.title}</strong></h2>
                         <p>{p.description}</p>
                         <p><strong>Location: </strong>{p.location}</p>
                         <p><strong>Date: </strong>{p.date ? p.date.slice(0,10) : null}</p>
