@@ -7,20 +7,27 @@ function CreateEventForm() {
   const [eventLocation, setEventLocation] = useState('');
   const [eventDescription, setEventDescription] = useState('');
   const [error, setError] = useState('');
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
+    const getUserId = parseInt(localStorage.getItem("userId"));
+    if (!getUserId) {
+      setError("No valid userId found, please log in again");
+      return;
+    }
     const authToken = localStorage.getItem('authToken');
     if (!authToken) {
       setError('No API token found.');
       return;
     }
     if (eventName.length < 3 ) {
-      return alert("The event title must be min. 3 characters long, please change it!")
+      setError("Title must be at least 3 characters, please extend it!");
+      return;
     }
+  
     try {
-      const response = await fetch('http://localhost:3333/api/events', {
+      const response = await fetch('http://localhost:3001/api/events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -31,7 +38,7 @@ function CreateEventForm() {
           description: eventDescription,
           date: eventDate,
           location: eventLocation, // hardcoded in swagger.js, schema/event.js, models/events.js
-          organizerId: 1 // should get from localstorage 
+          organizerId: getUserId // read the string value from localstorage and parse it to Integer 
         }),
       });
 
@@ -41,7 +48,8 @@ function CreateEventForm() {
 
       const data = await response.json();
       console.log('Event created successfully:', data);
-      alert("succesfully saved to the database")
+      alert("Event created successfully")
+      setError("");
       setEventName("");
       setEventLocation("");
       setEventDescription("");
