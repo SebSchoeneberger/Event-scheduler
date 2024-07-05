@@ -34,19 +34,18 @@ function EventList() { const [eventList, setEventList] = useState([]);
                          </figure>
       
                      <div className="card-body items-center text-center">
-                            <h2 className="card-title"><strong>{p.title}</strong></h2>
-                            <p>{p.description}</p>
-                            <p><strong>Location: </strong>{p.location}</p>
-                            <p><strong>Date: </strong>{p.date ? p.date.slice(0,10) : null}</p>
+                            <h2 className="card-title p-4 text-2xl"><strong>{p.title}</strong></h2>
+                                <div className="mt-8">
                         <div className="card-actions">
-                        <Link to={`/eventdetails/${p.id}`} ><button className="btn btn-outline bg-black">More</button></Link>
+                        <Link to={`/eventdetails/${p.id}`} ><button className="btn border-zinc-600">More</button></Link>
                         </div>
+                    </div>
                     </div>
                 </div>
                 </div>
                 ))}
             </div>
-                <Link to={`/protected/createeventform`} ><button className="btn btn-outline bg-black">Create Event</button></Link>
+                <Link to={`/protected/createeventform`} ><button className="btn btn-outline btn-neutral">Create Event</button></Link>
        </div>
     );
     
