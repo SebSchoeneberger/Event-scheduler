@@ -67,7 +67,7 @@ function CreateEventForm() {
       {error && <div className="text-red-500 mb-4">{error}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Event Title</label>
+          <label className="block text-gray-700 mb-2"><strong>Event Title</strong></label>
           <input
             type="text"
             className="w-full p-2 border border-gray-300 rounded"
@@ -78,7 +78,7 @@ function CreateEventForm() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Event Date</label>
+          <label className="block text-gray-700 mb-2"><strong>Event Date</strong></label>
           <input
             type="date"
             id="startdateID"
@@ -89,7 +89,7 @@ function CreateEventForm() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Event Location</label>
+          <label className="block text-gray-700 mb-2"><strong>Event Location</strong></label>
           <input
             type="text"
             className="w-full p-2 border border-gray-300 rounded"
@@ -100,7 +100,7 @@ function CreateEventForm() {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 mb-2">Event Description</label>
+          <label className="block text-gray-700 mb-2"><strong>Event Description</strong></label>
           <textarea
             className="w-full p-2 border border-gray-300 rounded"
             placeholder = "please enter your event's description"
@@ -109,7 +109,7 @@ function CreateEventForm() {
             required
           />
         </div>
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">Create Event</button>
+        <button type="submit" className="btn btn-outline bg-black">Create Event</button>
       </form>
     </div>
     </>
