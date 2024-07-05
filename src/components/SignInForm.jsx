@@ -16,7 +16,7 @@ function SignInForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(signInObj);
+    // console.log(signInObj);
     
     try {
       axios.post("http://localhost:3001/api/auth/login", signInObj)

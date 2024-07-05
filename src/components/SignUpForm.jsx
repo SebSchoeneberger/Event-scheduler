@@ -1,10 +1,47 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
+
 
 function SignUpForm() {
+  const [signUpObj, setSignUpObj] = useState({
+    email: '',
+    password: ''
+  })
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setSignUpObj((prev) => ({...prev, [e.target.name]: e.target.value}));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    try {
+      axios.post('http://localhost:3001/api/users', signUpObj)
+      .then((res) => {
+        console.log(res.data);
+        if (res.status === 200) {
+          navigate('/signin');
+        }
+      })
+    } catch (error) {
+      console.error(error);
+    }
+
+    setSignUpObj({
+      email: '',
+      password: ''
+    });
+
+  }
+
+
     return ( 
         <>
         <div className="flex justify-center">
-                <form className="w-64 flex flex-col gap-2 justify-center items-center h-80">
+                <form onSubmit={handleSubmit} className="w-64 flex flex-col gap-2 justify-center items-center h-80">
                     <h2 className="text-2xl pb-2 font-bold"> Register</h2>
                     <label className="input input-bordered flex items-center gap-2">
                     <svg
@@ -19,8 +56,12 @@ function SignUpForm() {
                     </svg>
                     <input
                       type="text"
+                      name="email"
                       className="grow"
-                      placeholder="Email" />
+                      placeholder="Email"
+                      value={signUpObj.name}
+                      required
+                      onChange={handleChange} />
                     </label>
         
                     <label className="input input-bordered flex items-center gap-2">
@@ -36,8 +77,12 @@ function SignUpForm() {
                     </svg>
                     <input
                       type="text"
+                      name="password"
                       className="grow"
-                      placeholder="Password" />
+                      placeholder="Password"
+                      value={signUpObj.password}
+                      required
+                      onChange={handleChange} />
                     </label>
                     
                     <label className="input input-bordered flex items-center gap-2">
@@ -54,7 +99,8 @@ function SignUpForm() {
                    <input
                       type="text"
                       className="grow"
-                      placeholder="Confirm Password" />
+                      placeholder="Confirm Password"
+                      required />
                     </label>
                 
                     <button className="btn btn-outline btn-neutral">Sign Up</button>
