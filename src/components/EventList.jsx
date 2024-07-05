@@ -32,16 +32,10 @@ function EventList() { const [eventList, setEventList] = useState([]);
                             alt="Planning"
                             className="rounded-xl" />
                          </figure>
-      
-
-        <div className="card-body items-center text-center">
+                            
+                    <div className="card-body items-center text-center">
                      <h2 className="card-title  p-4 text-2xl"><strong>{p.title}</strong></h2>
                             <div className="mt-8">
-
-                     <div className="card-body items-center text-center">
-                            <h2 className="card-title p-4 text-2xl"><strong>{p.title}</strong></h2>
-                                <div className="mt-8">
-
                         <div className="card-actions">
                         <Link to={`/eventdetails/${p.id}`} ><button className="btn border-zinc-600">More</button></Link>
                         </div>
@@ -57,4 +51,5 @@ function EventList() { const [eventList, setEventList] = useState([]);
     
 
 }
-export default EventList;  
+export default EventList; 
+                     
