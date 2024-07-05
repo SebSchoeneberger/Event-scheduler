@@ -31,14 +31,14 @@ function EventList() { const [eventList, setEventList] = useState([]);
                         className="rounded-xl" />
                      </figure>
   
-                    <div className="card-body items-center text-center">
+                 <div className="card-body items-center text-center">
                         <h2 className="card-title">{p.title}</h2>
                         <p>{p.description}</p>
-                        <p>{p.location}</p>
+                        <p><strong>Location: </strong>{p.location}</p>
+                        <p><strong>Date: </strong>{p.date ? p.date.slice(0,10) : null}</p>
                     <div className="card-actions">
-                    <button className="btn btn-outline bg-black">Buy Now</button>
+                    <button className="btn btn-outline bg-black">More</button>
                     </div>
-                 </div>
                 </div>
             </div>
             ))}
