@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
 function SignInForm() {
   const [signInObj, setSignInObj] = useState({
-    email: " ",
+    email: "",
     password: ""
   })
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setSignInObj((prev) => ({...prev, [e.target.name]: e.target.value}));
@@ -19,7 +21,13 @@ function SignInForm() {
     try {
       axios.post("http://localhost:3001/api/auth/login", signInObj)
       .then((res) => {
-        console.log(res.data)});
+        console.log(res.data);
+        if (res.status === 200){
+          localStorage.setItem('authToken', res.data.token)
+          localStorage.setItem('userId', res.data.user.id)
+          navigate('/eventlist');
+        }
+      })
     } catch (error) {
       console.error(error);
     }
@@ -28,6 +36,8 @@ function SignInForm() {
       email: '',
       password: ''
     });
+
+
   }
 
   return (

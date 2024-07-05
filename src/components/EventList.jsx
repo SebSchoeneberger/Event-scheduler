@@ -20,31 +20,34 @@ function EventList() { const [eventList, setEventList] = useState([]);
     
     return (
         
-        <div className="grid grid-cols-3 gap-4"> 
-            {eventList.map((p) => (
-                <div key={p.id}>
-                    <div className="card bg-base-100 w-96 shadow-xl">
-                    <figure className="px-10 pt-10">
-                        <img
-                        src="https://plus.unsplash.com/premium_photo-1683309561244-53ed64952752?q=80&w=2070&auto=format&fit=
-                                crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Planning"
-                        className="rounded-xl" />
-                     </figure>
-  
-                 <div className="card-body items-center text-center">
-                        <h2 className="card-title"><strong>{p.title}</strong></h2>
-                        <p>{p.description}</p>
-                        <p><strong>Location: </strong>{p.location}</p>
-                        <p><strong>Date: </strong>{p.date ? p.date.slice(0,10) : null}</p>
-                    <div className="card-actions">
-                    <Link to={`/eventdetails/${p.id}`} ><button className="btn btn-outline bg-black">More</button></Link>
+       <div>
+            <div className="grid grid-cols-3 gap-4 pb-6"> 
+                {eventList.map((p) => (
+                    <div key={p.id}>
+                        <div className="card bg-base-100 w-96 shadow-xl">
+                        <figure className="px-10 pt-10">
+                            <img
+                            src="https://plus.unsplash.com/premium_photo-1683309561244-53ed64952752?q=80&w=2070&auto=format&fit=
+                                    crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            alt="Planning"
+                            className="rounded-xl" />
+                         </figure>
+      
+                     <div className="card-body items-center text-center">
+                            <h2 className="card-title"><strong>{p.title}</strong></h2>
+                            <p>{p.description}</p>
+                            <p><strong>Location: </strong>{p.location}</p>
+                            <p><strong>Date: </strong>{p.date ? p.date.slice(0,10) : null}</p>
+                        <div className="card-actions">
+                        <Link to={`/eventdetails/${p.id}`} ><button className="btn btn-outline bg-black">More</button></Link>
+                        </div>
                     </div>
                 </div>
+                </div>
+                ))}
             </div>
-            </div>
-            ))}
-        </div>
+                <Link to={`/protected/createeventform`} ><button className="btn btn-outline bg-black">Create Event</button></Link>
+       </div>
     );
     
 
