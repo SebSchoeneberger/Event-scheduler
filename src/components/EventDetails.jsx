@@ -1,12 +1,25 @@
 import { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function EventDetails() {
     const [eventDetails, setEventDetails] = useState([]);
     const {id: initialId} = useParams();
     const [id, setId] =useState(parseInt(initialId, 10));
+
+    const navigate = useNavigate();
+    const token = localStorage.getItem('authToken');
+
+    const handleClick = () => {
+        axios.delete(`http://localhost:3001/api/events/${id}`,  {
+            headers: { Authorization: `Bearer ${token}` }
+    }).then((res) => {
+        console.log(res.data);
+        if (res.status === 204) {
+            navigate('/eventlist')
+        }})
+}
 
     useEffect (() => {
 
@@ -34,6 +47,7 @@ if (!eventDetails) return (
                 className="h-96" />
             </figure>
             <div className="card-body flex flex-col">
+                
                 <h2 className="card-title font-bold text-4xl pb-2 justify-center">{eventDetails.title}</h2>
                 <p>{eventDetails.description}</p>
                 <p><strong>Date: </strong>{eventDetails.date ? eventDetails.date.slice(0,10) : null}</p>
@@ -44,6 +58,20 @@ if (!eventDetails) return (
                 </Link>
                 </div>
             </div>
+            <button onClick={handleClick} className="btn btn-square btn-outline">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
         </div>
 
         <div className="join grid grid-cols-2 pt-6">
