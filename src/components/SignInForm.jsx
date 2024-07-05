@@ -1,10 +1,39 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 function SignInForm() {
+  const [signInObj, setSignInObj] = useState({
+    email: " ",
+    password: ""
+  })
+
+  const handleChange = (e) => {
+    setSignInObj((prev) => ({...prev, [e.target.name]: e.target.value}));
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(signInObj);
+    
+    try {
+      axios.post("http://localhost:3001/api/auth/login", signInObj)
+      .then((res) => {
+        console.log(res.data)});
+    } catch (error) {
+      console.error(error);
+    }
+
+    setSignInObj({
+      email: '',
+      password: ''
+    });
+  }
+
   return (
     <>
       <div className="flex justify-center">
-        <form className="w-64 flex flex-col gap-2 justify-center items-center h-80">
+        <form onSubmit={handleSubmit} className="w-64 flex flex-col gap-2 justify-center items-center h-80">
           <h2 className="text-2xl pb-2 font-bold">Sign in</h2>
           <label className="input input-bordered flex items-center gap-2">
             <svg
@@ -17,9 +46,13 @@ function SignInForm() {
               <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
             </svg>
             <input
+              name="email"
               type="text"
               className="grow"
-              placeholder="Email" />
+              placeholder="Email"
+              value={signInObj.email}
+              required
+              onChange={handleChange} />
           </label>
 
           <label className="input input-bordered flex items-center gap-2">
@@ -36,9 +69,13 @@ function SignInForm() {
               />
             </svg>
             <input
+              name="password"
               type="password"
               className="grow"
-              value="password" />
+              placeholder="Password"
+              value={signInObj.password}
+              required
+              onChange={handleChange}  />
           </label>
           <div className="form-control">
             <label className="label cursor-pointer">
@@ -50,7 +87,7 @@ function SignInForm() {
               />
             </label>
           </div>
-          <button className="btn btn-outline btn-neutral">Login</button>
+          <button type="submit" className="btn btn-outline btn-neutral">Login</button>
           <span>
             New Here?{" "}
             <Link to="/signup">
