@@ -33,9 +33,15 @@ function EventList() { const [eventList, setEventList] = useState([]);
                             className="rounded-xl" />
                          </figure>
       
+
+        <div className="card-body items-center text-center">
+                     <h2 className="card-title  p-4 text-2xl"><strong>{p.title}</strong></h2>
+                            <div className="mt-8">
+
                      <div className="card-body items-center text-center">
                             <h2 className="card-title p-4 text-2xl"><strong>{p.title}</strong></h2>
                                 <div className="mt-8">
+
                         <div className="card-actions">
                         <Link to={`/eventdetails/${p.id}`} ><button className="btn border-zinc-600">More</button></Link>
                         </div>
