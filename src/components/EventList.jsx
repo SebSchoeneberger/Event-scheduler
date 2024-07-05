@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 function EventList() { const [eventList, setEventList] = useState([]);
 
@@ -37,9 +38,10 @@ function EventList() { const [eventList, setEventList] = useState([]);
                         <p><strong>Location: </strong>{p.location}</p>
                         <p><strong>Date: </strong>{p.date ? p.date.slice(0,10) : null}</p>
                     <div className="card-actions">
-                    <button className="btn btn-outline bg-black">More</button>
+                    <Link to={`/eventdetails/${p.id}`} ><button className="btn btn-outline bg-black">More</button></Link>
                     </div>
                 </div>
+            </div>
             </div>
             ))}
         </div>
